@@ -4,5 +4,11 @@
 
 [node name="TowerBar" type="Node2D"]
 
-[node name="CellObject" parent="." instance=ExtResource( 1 )]
-position = Vector2( 32, 32 )
+[node name="Turret" parent="." instance=ExtResource( 1 )]
+position = Vector2( 64, 64 )
+
+[node name="Shield" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 64 )
+
+[node name="Dynamite" parent="." instance=ExtResource( 1 )]
+position = Vector2( 256, 64 )
