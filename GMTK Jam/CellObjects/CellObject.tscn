@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://CellObjects/CellObject.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://CellObjects/turret.png" type="Texture" id=3]
 [ext_resource path="res://CellObjects/shield.png" type="Texture" id=4]
 [ext_resource path="res://CellObjects/dynamite.png" type="Texture" id=5]
+[ext_resource path="res://CellObjects/oil_well.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -30,6 +31,11 @@ animations = [ {
 "loop": false,
 "name": "Dynamite",
 "speed": 0.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "OilWell",
+"speed": 0.0
 } ]
 
 [node name="CellObject" type="Node2D"]
@@ -48,7 +54,10 @@ animation = "CellObject"
 
 [node name="TurretBulletTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="CoinTimer" type="Timer" parent="."]
 [connection signal="area_entered" from="CellObjectArea" to="." method="_on_MouseArea_area_entered"]
 [connection signal="mouse_entered" from="CellObjectArea" to="." method="_on_MouseArea_mouse_entered"]
 [connection signal="mouse_exited" from="CellObjectArea" to="." method="_on_MouseArea_mouse_exited"]
 [connection signal="timeout" from="TurretBulletTimer" to="." method="_on_TurretBulletTimer_timeout"]
+[connection signal="timeout" from="CoinTimer" to="." method="_on_CoinTimer_timeout"]

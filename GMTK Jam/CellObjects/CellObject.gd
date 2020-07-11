@@ -10,6 +10,8 @@ func _ready() -> void:
 	match name:
 		"Turret":
 			$TurretBulletTimer.start()
+		"OilWell":
+			$CoinTimer.start()
 
 func _process(delta: float) -> void:
 	if mouse_over:
@@ -35,10 +37,19 @@ func _on_MouseArea_mouse_entered() -> void:
 func _on_MouseArea_mouse_exited() -> void:
 	mouse_over = false
 
-func shoot():
+func shoot() -> void:
 	var bullet: Area2D = Global.TURRET_BULLET.instance()
 	bullet.global_position = global_position
 	get_parent().get_parent().add_child(bullet)
 
+func spawn_coin() -> void:
+	randomize()
+	var coin: Area2D = Global.COIN.instance()
+	coin.global_position = global_position + Vector2(rand_range(-50, 50), rand_range(-50, 50))
+	get_parent().get_parent().add_child(coin)
+
 func _on_TurretBulletTimer_timeout():
 	shoot()
+
+func _on_CoinTimer_timeout():
+	spawn_coin()
