@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://CellObjects/shield.png" type="Texture" id=1]
+[ext_resource path="res://CellObjects/turret.png" type="Texture" id=2]
+[ext_resource path="res://CellObjects/dynamite.png" type="Texture" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://CellObjects/oil_well.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "CellObject",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "Shield",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "Turret",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "Dynamite",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": false,
+"name": "OilWell",
+"speed": 0.0
+} ]
+
+[node name="Objects" type="AnimatedSprite"]
+frames = SubResource( 2 )
+animation = "CellObject"

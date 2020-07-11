@@ -4,11 +4,12 @@ var mouse_over := false
 var follow_mouse := false
 var placed := false
 var cell: Area2D
+var type := "CellObject"
 onready var initial_position := global_position
 
 func _ready() -> void:
-	$Objects.play(name)
-	match name:
+	$Objects.play(type)
+	match type:
 		"Turret":
 			$TurretBulletTimer.start()
 		"OilWell":
@@ -42,13 +43,13 @@ func _on_MouseArea_mouse_exited() -> void:
 func shoot() -> void:
 	var bullet: Area2D = Global.TURRET_BULLET.instance()
 	bullet.global_position = global_position
-	get_parent().get_parent().add_child(bullet)
+	get_parent().add_child(bullet)
 
 func spawn_coin() -> void:
 	randomize()
 	var coin: Area2D = Global.COIN.instance()
 	coin.global_position = global_position + Vector2(rand_range(-50, 50), rand_range(-50, 50))
-	get_parent().get_parent().add_child(coin)
+	get_parent().add_child(coin)
 
 func _on_TurretBulletTimer_timeout():
 	if placed: shoot()

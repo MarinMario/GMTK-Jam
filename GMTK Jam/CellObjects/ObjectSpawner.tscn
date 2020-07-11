@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://CellObjects/Objects.tscn" type="PackedScene" id=1]
+[ext_resource path="res://CellObjects/ObjectSpawner.gd" type="Script" id=2]
+[ext_resource path="res://TowerBar/lock.png" type="Texture" id=3]
+[ext_resource path="res://TowerBar/button_hover.png" type="Texture" id=4]
+[ext_resource path="res://TowerBar/button_press.png" type="Texture" id=5]
+[ext_resource path="res://TowerBar/button.png" type="Texture" id=6]
+
+[node name="ObjectSpawner" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="SpawnObjectButton" type="TextureButton" parent="."]
+margin_left = -48.0
+margin_top = -48.0
+margin_right = 48.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 4 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Objects" parent="." instance=ExtResource( 1 )]
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Lock" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Lock"]
+modulate = Color( 0, 0, 0, 0.584314 )
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Lock"]
+texture = ExtResource( 3 )
+[connection signal="button_down" from="SpawnObjectButton" to="." method="_on_SpawnObjectButton_button_down"]
