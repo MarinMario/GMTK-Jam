@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://CellObjects/CellObject.tscn" type="PackedScene" id=1]
+
+[node name="TowerBar" type="Node2D"]
+
+[node name="CellObject" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32, 32 )
