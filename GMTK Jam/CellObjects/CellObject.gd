@@ -2,6 +2,7 @@ extends Node2D
 
 var mouse_over := false
 var follow_mouse := false
+var placed := false
 var cell: Area2D
 onready var initial_position := global_position
 
@@ -14,13 +15,14 @@ func _ready() -> void:
 			$CoinTimer.start()
 
 func _process(delta: float) -> void:
-	if mouse_over:
+	if mouse_over and not placed:
 		if Input.is_action_just_pressed("drag"):
 			follow_mouse = true
 		if Input.is_action_just_released("drag"):
 			follow_mouse = false
 			if cell != null:
 				global_position = cell.get_node("Pivot").global_position
+				placed = true
 			else:
 				global_position = initial_position
 	
@@ -49,7 +51,7 @@ func spawn_coin() -> void:
 	get_parent().get_parent().add_child(coin)
 
 func _on_TurretBulletTimer_timeout():
-	shoot()
+	if placed: shoot()
 
 func _on_CoinTimer_timeout():
-	spawn_coin()
+	if placed: spawn_coin()
