@@ -1,11 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Grid/Grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TowerBar/TowerBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://CoinSpawner/CoinSpawner.tscn" type="PackedScene" id=3]
 
 [node name="World" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 160.0
+color = Color( 0.184314, 0.184314, 0.184314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Grid" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 192 )
+position = Vector2( 32, 192 )
 
 [node name="TowerBar" parent="." instance=ExtResource( 2 )]
+
+[node name="CoinSpawner" parent="." instance=ExtResource( 3 )]

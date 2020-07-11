@@ -22,9 +22,10 @@ shape = SubResource( 1 )
 wait_time = 2.0
 
 [node name="CoinTimer" type="Timer" parent="."]
-wait_time = 3.0
-[connection signal="area_entered" from="CellObjectArea" to="." method="_on_MouseArea_area_entered"]
-[connection signal="mouse_entered" from="CellObjectArea" to="." method="_on_MouseArea_mouse_entered"]
-[connection signal="mouse_exited" from="CellObjectArea" to="." method="_on_MouseArea_mouse_exited"]
+wait_time = 10.0
+[connection signal="area_entered" from="CellObjectArea" to="." method="_on_CellObjectArea_area_entered"]
+[connection signal="area_exited" from="CellObjectArea" to="." method="_on_CellObjectArea_area_exited"]
+[connection signal="mouse_entered" from="CellObjectArea" to="." method="_on_CellObjectArea_mouse_entered"]
+[connection signal="mouse_exited" from="CellObjectArea" to="." method="_on_CellObjectArea_mouse_exited"]
 [connection signal="timeout" from="TurretBulletTimer" to="." method="_on_TurretBulletTimer_timeout"]
 [connection signal="timeout" from="CoinTimer" to="." method="_on_CoinTimer_timeout"]

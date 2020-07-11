@@ -63,5 +63,5 @@ drag={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.533333, 0.533333, 0.533333, 1 )
+environment/default_clear_color=Color( 0.360784, 0.360784, 0.360784, 1 )
 environment/default_environment="res://default_env.tres"

@@ -5,6 +5,7 @@ var follow_mouse := false
 var placed := false
 var cell: Area2D
 var type := "CellObject"
+var price := 100
 onready var initial_position := global_position
 
 func _ready() -> void:
@@ -12,8 +13,12 @@ func _ready() -> void:
 	match type:
 		"Turret":
 			$TurretBulletTimer.start()
+			price = 100
 		"OilWell":
 			$CoinTimer.start()
+			price = 100
+		"Shield": price = 150
+		"Dynamite": price = 300
 
 func _process(delta: float) -> void:
 	if mouse_over and not placed:
@@ -21,24 +26,16 @@ func _process(delta: float) -> void:
 			follow_mouse = true
 		if Input.is_action_just_released("drag"):
 			follow_mouse = false
-			if cell != null:
+			if cell != null and not cell.object_inside:
 				global_position = cell.get_node("Pivot").global_position
+				cell.object_inside = true
+				Global.coins -= price
 				placed = true
 			else:
-				global_position = initial_position
+				self.queue_free()
 	
 	if follow_mouse:
 		global_position = get_global_mouse_position()
-
-func _on_MouseArea_area_entered(area: Area2D) -> void:
-	if area.is_in_group("cells"):
-		cell = area
-
-func _on_MouseArea_mouse_entered() -> void:
-	mouse_over = true
-
-func _on_MouseArea_mouse_exited() -> void:
-	mouse_over = false
 
 func shoot() -> void:
 	var bullet: Area2D = Global.TURRET_BULLET.instance()
@@ -51,8 +48,23 @@ func spawn_coin() -> void:
 	coin.global_position = global_position + Vector2(rand_range(-50, 50), rand_range(-50, 50))
 	get_parent().add_child(coin)
 
-func _on_TurretBulletTimer_timeout():
+func _on_TurretBulletTimer_timeout() -> void:
 	if placed: shoot()
 
-func _on_CoinTimer_timeout():
+func _on_CoinTimer_timeout() -> void:
 	if placed: spawn_coin()
+
+func _on_CellObjectArea_area_entered(area: Area2D) -> void:
+	if area.is_in_group("cells"):
+		cell = area
+
+func _on_CellObjectArea_area_exited(area: Area2D) -> void:
+	if area.is_in_group("cells"):
+		cell = null
+
+func _on_CellObjectArea_mouse_entered() -> void:
+	mouse_over = true
+
+func _on_CellObjectArea_mouse_exited() -> void:
+	mouse_over = false
+

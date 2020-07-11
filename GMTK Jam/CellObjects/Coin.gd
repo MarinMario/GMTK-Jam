@@ -10,7 +10,6 @@ func _process(delta: float) -> void:
 		$CollisionShape2D.disabled = true
 		$AnimationPlayer.play("over")
 		Global.coins += 50
-		print(Global.coins)
 
 func _on_Coin_mouse_entered() -> void:
 	mouse_over = true
