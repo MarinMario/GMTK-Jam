@@ -36,7 +36,7 @@ scale = Vector2( 0.8, 0.8 )
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Lock"]
-modulate = Color( 0, 0, 0, 0.584314 )
+modulate = Color( 0, 0, 0, 1 )
 margin_left = -40.0
 margin_top = -40.0
 margin_right = 40.0

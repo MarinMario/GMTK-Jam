@@ -8,6 +8,7 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
+coins = 10000
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1280.0
@@ -25,4 +26,4 @@ position = Vector2( 32, 192 )
 [node name="CoinSpawner" parent="." instance=ExtResource( 3 )]
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1312, 192 )
+position = Vector2( 1304, 192 )
