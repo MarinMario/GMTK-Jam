@@ -10,3 +10,5 @@ export var health := 100
 
 func _process(delta: float) -> void:
 	global_position.x -= speed * delta
+	if global_position.x < -5:
+		get_parent().lose()

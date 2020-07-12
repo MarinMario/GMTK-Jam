@@ -1,14 +1,26 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Grid/Grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TowerBar/TowerBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://CoinSpawner/CoinSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/EnemySpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/World.gd" type="Script" id=5]
+[ext_resource path="res://MainMenu/LevelButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://MainMenu/Button.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Font.tres" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+font_data = ExtResource( 8 )
+
+[sub_resource type="InputEventAction" id=1]
+action = "escape"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
-coins = 10000
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1280.0
@@ -27,3 +39,70 @@ position = Vector2( 32, 192 )
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1304, 192 )
+
+[node name="PauseMenu" type="Node2D" parent="."]
+pause_mode = 2
+z_index = 4096
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+margin_left = -200.0
+margin_top = -112.0
+margin_right = 1464.0
+margin_bottom = 888.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="State" type="Label" parent="PauseMenu"]
+margin_right = 1280.0
+margin_bottom = 288.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.835294, 0.835294, 0.835294, 1 )
+text = "PAUSED"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="Control" parent="PauseMenu"]
+margin_left = 384.0
+margin_top = 392.0
+margin_right = 856.0
+margin_bottom = 496.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="NEXT" parent="PauseMenu/Buttons" instance=ExtResource( 6 )]
+margin_left = 168.0
+margin_top = 8.0
+margin_right = 318.0
+margin_bottom = 108.0
+
+[node name="RESTART" parent="PauseMenu/Buttons" instance=ExtResource( 7 )]
+margin_top = 8.0
+margin_bottom = 108.0
+
+[node name="EXIT" parent="PauseMenu/Buttons" instance=ExtResource( 7 )]
+margin_left = 336.0
+margin_top = 8.0
+margin_right = 486.0
+margin_bottom = 108.0
+
+[node name="PauseButton" type="Node2D" parent="."]
+pause_mode = 2
+position = Vector2( 1160, 13.6 )
+scale = Vector2( 0.7, 0.7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PAUSE" parent="PauseButton" instance=ExtResource( 7 )]
+pause_mode = 2
+shortcut = SubResource( 2 )
+[connection signal="pressed" from="PauseMenu/Buttons/RESTART" to="." method="_on_RESTART_pressed"]
+[connection signal="pressed" from="PauseMenu/Buttons/EXIT" to="." method="_on_EXIT_pressed"]
+[connection signal="pressed" from="PauseButton/PAUSE" to="." method="_on_PAUSE_pressed"]

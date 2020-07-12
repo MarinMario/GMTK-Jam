@@ -16,6 +16,10 @@ func _process(delta: float) -> void:
 			spawn_timer = 0
 			spawn_enemy()
 			spawn_time = choose_random_time()
+	
+	if get_parent().enemies_spawned >= get_parent().enemy_amount:
+		get_parent().win()
+		queue_free()
 
 func choose_random_time() -> int:
 	randomize()
