@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Font.tres" type="DynamicFontData" id=1]
 [ext_resource path="res://MainMenu/Button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://MainMenu/LevelButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MainMenu/Buttons.gd" type="Script" id=4]
+[ext_resource path="res://MainMenu/MainMenu.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 1 )
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -32.0
@@ -33,7 +36,8 @@ __meta__ = {
 }
 
 [node name="Buttons" type="Node2D" parent="."]
-position = Vector2( 128, 256 )
+position = Vector2( 128, 264 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -44,20 +48,46 @@ __meta__ = {
 margin_top = 104.0
 margin_bottom = 208.0
 
-[node name="Levels" type="Node2D" parent="."]
-position = Vector2( 696, 264 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="LevelButtons" type="Node2D" parent="."]
+position = Vector2( 640, 264 )
 
-[node name="LEVEL 1" parent="Levels" instance=ExtResource( 3 )]
+[node name="LEVEL 1" parent="LevelButtons" instance=ExtResource( 3 )]
+level = "res://World/Level1.tscn"
 
-[node name="LEVEL 2" parent="Levels" instance=ExtResource( 3 )]
+[node name="LEVEL 2" parent="LevelButtons" instance=ExtResource( 3 )]
 margin_left = 168.0
 margin_right = 318.0
-level = 2
+level = "res://World/Level2.tscn"
 
-[node name="LEVEL 3" parent="Levels" instance=ExtResource( 3 )]
+[node name="LEVEL 3" parent="LevelButtons" instance=ExtResource( 3 )]
 margin_left = 336.0
 margin_right = 486.0
-level = 3
+level = "res://World/Level3.tscn"
+
+[node name="LEVEL 4" parent="LevelButtons" instance=ExtResource( 3 )]
+margin_top = 100.0
+margin_bottom = 200.0
+level = "res://World/Level4.tscn"
+
+[node name="LEVEL 5" parent="LevelButtons" instance=ExtResource( 3 )]
+margin_left = 168.0
+margin_top = 96.0
+margin_right = 318.0
+margin_bottom = 196.0
+level = "res://World/Level6.tscn"
+
+[node name="LEVEL 6" parent="LevelButtons" instance=ExtResource( 3 )]
+margin_left = 336.0
+margin_top = 100.0
+margin_right = 486.0
+margin_bottom = 200.0
+level = "res://World/Level3.tscn"
+
+[node name="SANDBOX" parent="LevelButtons" instance=ExtResource( 3 )]
+margin_left = 168.0
+margin_top = 196.0
+margin_right = 318.0
+margin_bottom = 296.0
+level = "res://World/Sandbox.tscn"
+[connection signal="pressed" from="Buttons/PLAY" to="." method="_on_PLAY_pressed"]
+[connection signal="pressed" from="Buttons/EXIT" to="." method="_on_EXIT_pressed"]

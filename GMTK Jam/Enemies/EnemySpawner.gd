@@ -23,8 +23,8 @@ func _process(delta: float) -> void:
 
 func choose_random_time() -> int:
 	randomize()
-	min_time -= 1 if min_time > 3 else 0
-	max_time -= 2 if max_time > 9 else 0
+	min_time -= 1 if min_time > 0 else 0
+	max_time -= 2 if max_time > 5 else 0
 	var time: int = int(rand_range(min_time, max_time))
 	return time
 

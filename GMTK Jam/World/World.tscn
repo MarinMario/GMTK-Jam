@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Grid/Grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TowerBar/TowerBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://CoinSpawner/CoinSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/EnemySpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/World.gd" type="Script" id=5]
-[ext_resource path="res://MainMenu/LevelButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://MainMenu/Button.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Font.tres" type="DynamicFontData" id=8]
 
@@ -75,12 +74,6 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
-
-[node name="NEXT" parent="PauseMenu/Buttons" instance=ExtResource( 6 )]
-margin_left = 168.0
-margin_top = 8.0
-margin_right = 318.0
-margin_bottom = 108.0
 
 [node name="RESTART" parent="PauseMenu/Buttons" instance=ExtResource( 7 )]
 margin_top = 8.0

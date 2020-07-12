@@ -1,32 +1,22 @@
 extends Node2D
 
-var enemy_amount := 30
-var coins := 100000
+export var enemy_amount := 30
+export var coins := 100
 var enemies_spawned := 0
-var enemy_types := [1,2]
+export var enemy_types := [1,2]
 
 func _ready():
-	$PauseMenu/Buttons/NEXT.level = Global.current_level + 1
 	$PauseMenu.visible = false
 	get_tree().paused = false
-	match Global.current_level:
-		1:
-			enemy_amount = 20
-			enemy_types = [1]
-		2:
-			enemy_amount = 25
-			enemy_types = [1,1,1,1,2]
-		3:
-			enemy_amount = 30
-			enemy_types = [1,1,1,2]
 
 func lose():
+	get_tree().paused = true
 	$PauseMenu.visible = true
 	$PauseMenu/State.text = "You Lose"
 
 func win():
+	get_tree().paused = true
 	$PauseMenu.visible = true
-	Global.unlocked_levels += 1
 	$PauseMenu/State.text = "You Win"
 
 func _on_RESTART_pressed():

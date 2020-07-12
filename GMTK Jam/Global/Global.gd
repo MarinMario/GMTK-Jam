@@ -10,6 +10,3 @@ const CELL_OBJECT = preload("res://CellObjects/CellObject.tscn")
 
 const ENEMY1 = preload("res://Enemies/Enemy1/Enemy1.tscn")
 const ENEMY1PRO = preload("res://Enemies/Enemy1/Enemy1Pro.tscn")
-
-var current_level := 1
-var unlocked_levels := 1
