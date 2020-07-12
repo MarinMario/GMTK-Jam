@@ -9,6 +9,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("drag") and mouse_over:
 		$CollisionShape2D.disabled = true
 		$AnimationPlayer.play("over")
+		Global.get_node("hit").play()
 		get_parent().coins += 50
 
 func _on_Coin_mouse_entered() -> void:

@@ -13,11 +13,13 @@ func lose():
 	get_tree().paused = true
 	$PauseMenu.visible = true
 	$PauseMenu/State.text = "You Lose"
+	Global.get_node("lose").play()
 
 func win():
 	get_tree().paused = true
 	$PauseMenu.visible = true
 	$PauseMenu/State.text = "You Win"
+	Global.get_node("win").play()
 
 func _on_RESTART_pressed():
 	get_tree().reload_current_scene()

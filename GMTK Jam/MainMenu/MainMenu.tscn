@@ -28,7 +28,7 @@ margin_right = 1280.0
 margin_bottom = 296.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.835294, 0.835294, 0.835294, 1 )
-text = "Game Title"
+text = "Robot Warfare"
 align = 1
 valign = 1
 __meta__ = {
@@ -36,20 +36,18 @@ __meta__ = {
 }
 
 [node name="Buttons" type="Node2D" parent="."]
-position = Vector2( 128, 264 )
+position = Vector2( 552, 472 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="PLAY" parent="Buttons" instance=ExtResource( 2 )]
 
 [node name="EXIT" parent="Buttons" instance=ExtResource( 2 )]
 margin_top = 104.0
 margin_bottom = 208.0
 
 [node name="LevelButtons" type="Node2D" parent="."]
-position = Vector2( 640, 264 )
+position = Vector2( 384, 264 )
 
 [node name="LEVEL 1" parent="LevelButtons" instance=ExtResource( 3 )]
 level = "res://World/Level1.tscn"
@@ -74,14 +72,14 @@ margin_left = 168.0
 margin_top = 96.0
 margin_right = 318.0
 margin_bottom = 196.0
-level = "res://World/Level6.tscn"
+level = "res://World/Level5.tscn"
 
 [node name="LEVEL 6" parent="LevelButtons" instance=ExtResource( 3 )]
 margin_left = 336.0
 margin_top = 100.0
 margin_right = 486.0
 margin_bottom = 200.0
-level = "res://World/Level3.tscn"
+level = "res://World/Level6.tscn"
 
 [node name="SANDBOX" parent="LevelButtons" instance=ExtResource( 3 )]
 margin_left = 168.0
@@ -89,5 +87,4 @@ margin_top = 196.0
 margin_right = 318.0
 margin_bottom = 296.0
 level = "res://World/Sandbox.tscn"
-[connection signal="pressed" from="Buttons/PLAY" to="." method="_on_PLAY_pressed"]
 [connection signal="pressed" from="Buttons/EXIT" to="." method="_on_EXIT_pressed"]

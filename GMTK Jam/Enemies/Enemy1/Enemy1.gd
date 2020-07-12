@@ -24,5 +24,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 func take_damage(dmg: int) -> void:
 	health -= dmg
 	if health <= 0:
+		if get_parent().enemies_spawned >= get_parent().enemy_amount:
+			get_parent().win()
 		self.queue_free()
 	

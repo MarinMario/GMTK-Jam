@@ -10,4 +10,5 @@ func _process(delta : float) -> void:
 func _on_TurretBullet_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemies"):
 		area.take_damage(25)
+		Global.get_node("hit").play()
 		queue_free()

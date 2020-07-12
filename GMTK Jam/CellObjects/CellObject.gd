@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 			follow_mouse = false
 			if cell != null and not cell.object_inside:
 				global_position = cell.get_node("Pivot").global_position
+				Global.get_node("hit").play()
 				cell.object_inside = true
 				get_parent().coins -= price
 				placed = true
@@ -58,10 +59,13 @@ func spawn_coin() -> void:
 	randomize()
 	var coin: Area2D = Global.COIN.instance()
 	coin.global_position = global_position + Vector2(rand_range(-50, 50), rand_range(-50, 50))
+	Global.get_node("shoot").play()
 	get_parent().add_child(coin)
 
 func _on_TurretBulletTimer_timeout() -> void:
-	if placed: shoot()
+	if placed: 
+		shoot()
+		Global.get_node("shoot").play()
 
 func _on_CoinTimer_timeout() -> void:
 	if placed: spawn_coin()
@@ -93,6 +97,7 @@ func explode():
 	var explosion = Global.EXPLOSION.instance()
 	explosion.global_position = global_position
 	get_parent().add_child(explosion)
+	Global.get_node("explosion").play()
 	take_damage(500)
 
 func _on_ExplodeTimer_timeout():
