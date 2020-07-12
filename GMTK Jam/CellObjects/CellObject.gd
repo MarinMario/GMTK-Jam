@@ -6,6 +6,7 @@ var placed := false
 var cell: Area2D
 var type := "CellObject"
 var price := 100
+export var health := 100
 onready var initial_position := global_position
 
 func _ready() -> void:
@@ -17,7 +18,9 @@ func _ready() -> void:
 		"OilWell":
 			$CoinTimer.start()
 			price = 100
-		"Shield": price = 150
+		"Shield": 
+			price = 150
+			health = 500
 		"Dynamite": price = 300
 
 func _process(delta: float) -> void:
@@ -68,3 +71,8 @@ func _on_CellObjectArea_mouse_entered() -> void:
 func _on_CellObjectArea_mouse_exited() -> void:
 	mouse_over = false
 
+func take_damage(dmg: int) -> void:
+	health -= dmg
+	if health <= 0:
+		cell.object_inside = false
+		queue_free()

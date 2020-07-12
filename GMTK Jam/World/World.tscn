@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Grid/Grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TowerBar/TowerBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://CoinSpawner/CoinSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/EnemySpawner.tscn" type="PackedScene" id=4]
 
 [node name="World" type="Node2D"]
 
@@ -20,3 +21,15 @@ position = Vector2( 32, 192 )
 [node name="TowerBar" parent="." instance=ExtResource( 2 )]
 
 [node name="CoinSpawner" parent="." instance=ExtResource( 3 )]
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1232, 256 )
+
+[node name="EnemySpawner2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1232, 384 )
+
+[node name="EnemySpawner3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1232, 512 )
+
+[node name="EnemySpawner4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1232, 640 )
