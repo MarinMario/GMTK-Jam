@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 			if cell != null and not cell.object_inside:
 				global_position = cell.get_node("Pivot").global_position
 				cell.object_inside = true
-				Global.coins -= price
+				get_parent().coins -= price
 				placed = true
 			else:
 				self.queue_free()

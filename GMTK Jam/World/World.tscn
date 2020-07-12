@@ -1,15 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Grid/Grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TowerBar/TowerBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://CoinSpawner/CoinSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/EnemySpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/World.gd" type="Script" id=5]
 
 [node name="World" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1280.0
-margin_bottom = 160.0
+margin_bottom = 136.0
 color = Color( 0.184314, 0.184314, 0.184314, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -23,13 +25,4 @@ position = Vector2( 32, 192 )
 [node name="CoinSpawner" parent="." instance=ExtResource( 3 )]
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1232, 256 )
-
-[node name="EnemySpawner2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1232, 384 )
-
-[node name="EnemySpawner3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1232, 512 )
-
-[node name="EnemySpawner4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1232, 640 )
+position = Vector2( 1312, 192 )

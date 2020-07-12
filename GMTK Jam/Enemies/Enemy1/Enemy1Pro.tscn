@@ -1,43 +1,45 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Enemies/Enemy1/Enemy1.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/Enemy1/enemy1.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/Enemy1/Enemy1Pro.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/Enemy1/Enemy1.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 32 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "attack"
+length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Enemy1Weapon:rotation_degrees")
+tracks/0/path = NodePath("Enemy1ProWeapon:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 360.0, 0.0 ]
+"values": [ 180.0, 0.0 ]
 }
 
-[node name="Enemy1" type="Area2D" groups=[
+[node name="Enemy1Pro" type="Area2D" groups=[
 "enemies",
 ]]
-script = ExtResource( 1 )
-initial_speed = 50
-health = 150
+script = ExtResource( 3 )
+initial_speed = 60
+damage = 25
+health = 300
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Body" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 vframes = 2
 
-[node name="Enemy1Weapon" type="Sprite" parent="."]
+[node name="Enemy1ProWeapon" type="Sprite" parent="."]
+position = Vector2( -32, 0 )
 texture = ExtResource( 2 )
-offset = Vector2( -20, 2 )
 vframes = 2
 frame = 1
 

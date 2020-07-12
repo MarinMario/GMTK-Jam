@@ -2,9 +2,6 @@ extends EnemyActor
 
 var object_to_attack: Node2D = null
 
-func _ready():
-	initial_speed = 50
-
 func attack(cell_object: Node2D) -> void:
 	$AnimationPlayer.play("attack")
 	cell_object.take_damage(35)

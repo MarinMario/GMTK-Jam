@@ -11,6 +11,19 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="1" type="Sprite" parent="."]
+position = Vector2( 64, 64 )
+texture = ExtResource( 2 )
+
+[node name="2" type="Sprite" parent="."]
+position = Vector2( 64, 192 )
+texture = ExtResource( 2 )
+
+[node name="3" type="Sprite" parent="."]
+position = Vector2( 64, 320 )
+texture = ExtResource( 2 )
+
+[node name="4" type="Sprite" parent="."]
+position = Vector2( 64, 448 )
 texture = ExtResource( 2 )
 [connection signal="timeout" from="StartSpawningTimer" to="." method="_on_StartSpawningTimer_timeout"]
