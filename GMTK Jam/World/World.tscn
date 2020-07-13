@@ -8,15 +8,15 @@
 [ext_resource path="res://MainMenu/Button.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Font.tres" type="DynamicFontData" id=8]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 8 )
 
-[sub_resource type="InputEventAction" id=1]
+[sub_resource type="InputEventAction" id=2]
 action = "escape"
 
-[sub_resource type="ShortCut" id=2]
-shortcut = SubResource( 1 )
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
@@ -56,7 +56,7 @@ __meta__ = {
 [node name="State" type="Label" parent="PauseMenu"]
 margin_right = 1280.0
 margin_bottom = 288.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.835294, 0.835294, 0.835294, 1 )
 text = "PAUSED"
 align = 1
@@ -95,7 +95,7 @@ __meta__ = {
 
 [node name="PAUSE" parent="PauseButton" instance=ExtResource( 7 )]
 pause_mode = 2
-shortcut = SubResource( 2 )
+shortcut = SubResource( 3 )
 [connection signal="pressed" from="PauseMenu/Buttons/RESTART" to="." method="_on_RESTART_pressed"]
 [connection signal="pressed" from="PauseMenu/Buttons/EXIT" to="." method="_on_EXIT_pressed"]
 [connection signal="pressed" from="PauseButton/PAUSE" to="." method="_on_PAUSE_pressed"]

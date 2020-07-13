@@ -5,6 +5,10 @@ export var coins := 100
 var enemies_spawned := 0
 export var enemy_types := [1,2]
 
+func _process(delta):
+	if enemies_spawned >= enemy_amount:
+		win()
+
 func _ready():
 	$PauseMenu.visible = false
 	get_tree().paused = false

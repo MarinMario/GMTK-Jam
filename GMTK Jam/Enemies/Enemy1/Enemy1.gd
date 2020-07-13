@@ -1,4 +1,10 @@
-extends EnemyActor
+extends Area2D
+
+export var initial_speed := 100
+onready var speed := initial_speed
+export var damage := 30
+
+export var health := 100
 
 var object_to_attack: Node2D = null
 
@@ -7,6 +13,9 @@ func attack(cell_object: Node2D) -> void:
 	cell_object.take_damage(35)
 
 func _process(delta: float) -> void:
+	global_position.x -= speed * delta
+	if global_position.x < -5:
+		get_parent().lose()
 	if object_to_attack == null:
 		speed = initial_speed
 	else:
@@ -24,7 +33,6 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 func take_damage(dmg: int) -> void:
 	health -= dmg
 	if health <= 0:
-		if get_parent().enemies_spawned >= get_parent().enemy_amount:
-			get_parent().win()
+		get_parent().enemies_spawned += 1
 		self.queue_free()
 	

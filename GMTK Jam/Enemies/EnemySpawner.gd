@@ -38,7 +38,6 @@ func spawn_enemy() -> void:
 	var spawn_pos: Vector2 = get_node(str(randi() % 4 + 1)).global_position
 	enemy.global_position = spawn_pos
 	get_parent().add_child(enemy)
-	get_parent().enemies_spawned += 1
 
 func _on_StartSpawningTimer_timeout():
 	can_spawn = true
