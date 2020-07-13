@@ -96,6 +96,10 @@ __meta__ = {
 [node name="PAUSE" parent="PauseButton" instance=ExtResource( 7 )]
 pause_mode = 2
 shortcut = SubResource( 3 )
+
+[node name="WinTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="pressed" from="PauseMenu/Buttons/RESTART" to="." method="_on_RESTART_pressed"]
 [connection signal="pressed" from="PauseMenu/Buttons/EXIT" to="." method="_on_EXIT_pressed"]
 [connection signal="pressed" from="PauseButton/PAUSE" to="." method="_on_PAUSE_pressed"]
+[connection signal="timeout" from="WinTimer" to="." method="_on_WinTimer_timeout"]

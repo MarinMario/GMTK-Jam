@@ -5,9 +5,12 @@ export var coins := 100
 var enemies_spawned := 0
 export var enemy_types := [1,2]
 
+var win = false
+
 func _process(delta):
-	if enemies_spawned >= enemy_amount:
-		win()
+	if not win and enemies_spawned >= enemy_amount:
+		$WinTimer.start()
+		win = true
 
 func _ready():
 	$PauseMenu.visible = false
@@ -34,3 +37,6 @@ func _on_EXIT_pressed():
 func _on_PAUSE_pressed():
 	get_tree().paused = !get_tree().paused
 	$PauseMenu.visible = get_tree().paused
+
+func _on_WinTimer_timeout():
+	win()
